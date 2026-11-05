@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "robot-skills-reliability"
+version = "0.1.0"
+description = "Reusable robot skills, behavior-tree executive, fault injection and reliability tooling on a deterministic 2D simulator"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.24"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.4"]
+
+[project.scripts]
+robot-skills = "robot_skills.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["robot_skills*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

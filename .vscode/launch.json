@@ -1,0 +1,69 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "run (nominal)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "robot_skills",
+      "args": ["run", "--task-id", "debug-nominal", "--show-tree"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true
+    },
+    {
+      "name": "run --fault grasp_failure",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "robot_skills",
+      "args": ["run", "--task-id", "debug-grasp", "--fault", "grasp_failure"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "run --fault repeated_failure",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "robot_skills",
+      "args": ["run", "--task-id", "debug-repeated", "--fault", "repeated_failure"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "replay (pick a log)",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "robot_skills",
+      "args": ["replay", "--log", "${input:logPath}"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "benchmark",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "robot_skills",
+      "args": ["benchmark", "--trials", "10"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "pytest: current file",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "args": ["${file}", "-q"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    }
+  ],
+  "inputs": [
+    {
+      "id": "logPath",
+      "type": "promptString",
+      "description": "Path to a JSONL log",
+      "default": "logs/debug-grasp.jsonl"
+    }
+  ]
+}
